@@ -14,24 +14,26 @@ class ViewController: UIViewController {
     let mediumTime = 7
     let hardTime = 12
     
-    let eggTimes = ["softTime": 5, "mediumTime": 7, "hardTime": 12]
+    let eggTimes = ["Soft": 5, "Medium": 7, "Hard": 12]
     
     
     @IBAction func hardnessSelected(_ sender: UIButton) {
         let hardness = sender.currentTitle!
         
-        print(eggTimes[hardness]!)
+        let time = eggTimes[hardness]!
         
-//        switch hardness {
-//        case "Soft":
-//            print(softTime)
-//        case "Hard":
-//            print(hardTime)
-//        case "Medium":
-//            print(mediumTime)
-//        default:
-//            print("else")
-//        }
+        let seconds = time * 60
+        
+        for sec in (0...seconds).reversed() {
+            
+            
+                DispatchQueue.main.asyncAfter(deadline: .now() + 11) {
+                    print("\(sec) seconds")
+                    
+                }
+
+        }
+        
         
     }
     
