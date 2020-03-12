@@ -120,6 +120,21 @@
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nJN-th-c5K" userLabel="Timer View">
                                         <rect key="frame" x="0.0" y="571.33333333333337" width="374" height="246.66666666666663"/>
+                                        <subviews>
+                                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="k2g-Ub-u54">
+                                                <rect key="frame" x="0.0" y="121" width="374" height="6"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="5" id="mcr-Mf-ITi"/>
+                                                </constraints>
+                                                <color key="progressTintColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="trackTintColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </progressView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="k2g-Ub-u54" firstAttribute="leading" secondItem="nJN-th-c5K" secondAttribute="leading" constant="0.01" id="GJc-IB-PtE"/>
+                                            <constraint firstItem="k2g-Ub-u54" firstAttribute="centerY" secondItem="nJN-th-c5K" secondAttribute="centerY" id="Z2W-RX-D1b"/>
+                                            <constraint firstAttribute="trailing" secondItem="k2g-Ub-u54" secondAttribute="trailing" constant="0.01" id="ref-cv-3oP"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
                             </stackView>
@@ -135,6 +150,7 @@
                     </view>
                     <connections>
                         <outlet property="labelTop" destination="XLm-5r-pSP" id="APF-E9-EzW"/>
+                        <outlet property="progressBar" destination="k2g-Ub-u54" id="y5Y-Ic-eKG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
