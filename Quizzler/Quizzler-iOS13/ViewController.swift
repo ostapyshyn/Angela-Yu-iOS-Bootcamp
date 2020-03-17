@@ -46,37 +46,66 @@ class ViewController: UIViewController {
     
     @IBAction func answerButtonTapped(_ sender: UIButton) {
         
-        
-        
-        let userAnswer = sender.currentTitle
+        let userAnswer = sender.currentTitle // true false button
         let actualAnswer = quiz[questionNumber].answer
         
         if userAnswer == actualAnswer {
             print("You are right!")
+            
+            
+//            if sender.currentTitle == "False" {
+//                sender.backgroundColor = UIColor.green
+//                trueButtom.backgroundColor = UIColor.clear
+//            } else if sender.currentTitle == "True" {
+//                sender.backgroundColor = UIColor.green
+//                falseButton.backgroundColor = UIColor.clear
+//            }
+            
+                
+            
             sender.backgroundColor = UIColor.green
             
         } else {
             print("You Made A Mistake!")
-            sender.backgroundColor = UIColor.red
+//            if sender.currentTitle == "False" {
+//                sender.backgroundColor = UIColor.red
+//                trueButtom.backgroundColor = UIColor.clear
+//            } else if sender.currentTitle == "True" {
+//                sender.backgroundColor = UIColor.red
+//                falseButton.backgroundColor = UIColor.clear
+//            }
             
+           
+            sender.backgroundColor = UIColor.red
             
         }
         
         print(questionNumber, quiz.count)
+        
         if questionNumber < quiz.count-1 {
             questionNumber += 1
-            updateUI()
+            
         } else  {
             questionNumber = 0
-            updateUI()
+            
         }
+        
+        //var timer = Timer()
+        //timer =
+        Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(updateUI), userInfo: nil, repeats: false)
+       
+        //updateUI()
         
         
         
     }
     
-    func updateUI() {
+    @objc func updateUI() {
         topLabel.text = quiz[questionNumber].text
+        
+        trueButtom.backgroundColor = UIColor.clear
+        falseButton.backgroundColor = UIColor.clear
+        
     }
     
 
