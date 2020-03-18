@@ -20,6 +20,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //progressBar.progress = Float(0)
         updateUI()
     }
     
@@ -95,7 +96,9 @@ class ViewController: UIViewController {
         Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(updateUI), userInfo: nil, repeats: false)
        
         //updateUI()
-        
+        let percentage: Float = Float(questionNumber + 1) / Float(quiz.count)
+                    
+        progressBar.progress = percentage
         
         
     }
@@ -105,6 +108,10 @@ class ViewController: UIViewController {
         
         trueButtom.backgroundColor = UIColor.clear
         falseButton.backgroundColor = UIColor.clear
+        
+        let percentage: Float = Float(questionNumber + 1) / Float(quiz.count)
+                    
+        progressBar.progress = percentage
         
     }
     
