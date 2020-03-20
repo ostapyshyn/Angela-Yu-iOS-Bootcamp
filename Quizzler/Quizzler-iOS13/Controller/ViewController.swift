@@ -34,11 +34,11 @@ class ViewController: UIViewController {
     @IBAction func answerButtonTapped(_ sender: UIButton) {
         
         let userAnswer = sender.currentTitle! // true false button
-        quizBrain.checkAnswer(of: userAnswer)
+        let userGotItRight = quizBrain.checkAnswer(of: userAnswer)
         
         
         
-        if userAnswer == actualAnswer {
+        if userGotItRight {
             print("You are right!")
             
             
@@ -71,13 +71,7 @@ class ViewController: UIViewController {
         
         print(questionNumber, quiz.count)
         
-        if questionNumber < quiz.count-1 {
-            questionNumber += 1
-            
-        } else  {
-            questionNumber = 0
-            
-        }
+        
         
         //var timer = Timer()
         //timer =
@@ -92,12 +86,14 @@ class ViewController: UIViewController {
     }
     
     @objc func updateUI() {
-        topLabel.text = quiz[questionNumber].text
+        topLabel.text = quizBrain.getQuestionText()
+        
         
         trueButtom.backgroundColor = UIColor.clear
         falseButton.backgroundColor = UIColor.clear
         
-        let percentage: Float = Float(questionNumber + 1) / Float(quiz.count)
+        
+        let percentage: Float = quizBrain.getProgress()
                     
         progressBar.progress = percentage
         
