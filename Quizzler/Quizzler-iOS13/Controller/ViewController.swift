@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     
     @IBOutlet var trueButtom: UIButton!
     @IBOutlet var falseButton: UIButton!
+    @IBOutlet var scoreLabel: UILabel!
     
     var quizBrain = QuizBrain()
     
@@ -69,24 +70,25 @@ class ViewController: UIViewController {
             
         }
         
-        print(questionNumber, quiz.count)
+        //print(questionNumber, quiz.count)
         
         
-        
+        quizBrain.nextQuestion()
         //var timer = Timer()
         //timer =
         Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(updateUI), userInfo: nil, repeats: false)
        
         //updateUI()
-        let percentage: Float = Float(questionNumber + 1) / Float(quiz.count)
+        //let percentage: Float = Float(questionNumber + 1) / Float(quiz.count)
                     
-        progressBar.progress = percentage
+        //progress = percentage
         
         
     }
     
     @objc func updateUI() {
         topLabel.text = quizBrain.getQuestionText()
+        scoreLabel.text = "Score: \(quizBrain.getScore())"
         
         
         trueButtom.backgroundColor = UIColor.clear
