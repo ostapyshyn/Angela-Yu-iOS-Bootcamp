@@ -13,8 +13,11 @@ class ViewController: UIViewController {
     @IBOutlet var topLabel: UILabel!
     @IBOutlet var progressBar: UIProgressView!
     
-    @IBOutlet var trueButtom: UIButton!
-    @IBOutlet var falseButton: UIButton!
+    @IBOutlet var choiceOne: UIButton!
+    @IBOutlet var choiceTwo: UIButton!
+    
+    @IBOutlet var choiceThree: UIButton!
+    
     @IBOutlet var scoreLabel: UILabel!
     
     var quizBrain = QuizBrain()
@@ -90,10 +93,14 @@ class ViewController: UIViewController {
         topLabel.text = quizBrain.getQuestionText()
         scoreLabel.text = "Score: \(quizBrain.getScore())"
         
+        choiceOne.setTitle(quizBrain.getAnswer(num: 0), for: .normal)
+        choiceTwo.setTitle(quizBrain.getAnswer(num: 1), for: .normal)
+        choiceThree.setTitle(quizBrain.getAnswer(num: 2), for: .normal)
         
-        trueButtom.backgroundColor = UIColor.clear
-        falseButton.backgroundColor = UIColor.clear
         
+        choiceOne.backgroundColor = UIColor.clear
+        choiceTwo.backgroundColor = UIColor.clear
+        choiceThree.backgroundColor = UIColor.clear
         
         let percentage: Float = quizBrain.getProgress()
                     

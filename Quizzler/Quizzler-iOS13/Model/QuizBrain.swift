@@ -63,4 +63,8 @@ struct QuizBrain {
         return mainScore
     }
     
+    func getAnswer(num: Int) -> String {
+        quiz[questionNumber].answer[num]
+    }
+    
 }
