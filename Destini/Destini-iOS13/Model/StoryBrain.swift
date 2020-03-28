@@ -9,15 +9,18 @@
 import Foundation
 
 struct StoryBrain {
-    // Create a method (a function associated with an object) in the StoryBrain that’s called nextStory(), it should take a single input called userChoice which is of type String.
-    var storyNumber: Int
-    
-    
-    
-    
+    // Move the story progression functionality that currently lives in the choiceMade() IBAction into the nextStory() method.
+    var storyNumber = 0
     
     var stories = [Story(title: "You see a fork in the road.", choice1: "Take a left.", choice2: "Take a right."),
                    Story(title: "You see a tiger.", choice1: "Shout for help.", choice2: "Play dead."),
                    Story(title: "You find a treasure chest.", choice1: "Open it.", choice2: "Check for traps.")
     ]
+    
+    
+    mutating func nextStory() -> Int {
+        storyNumber = storyNumber + 1
+        return storyNumber
+        
+    }
 }
