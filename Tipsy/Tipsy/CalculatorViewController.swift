@@ -15,7 +15,10 @@ class CalculatorViewController: UIViewController {
     @IBOutlet var twentyPctButton: UIButton!
     @IBOutlet var splitNumberLabel: UILabel!
     
+    var bill: String!
     var numOfSplits = 2
+    var result: Double!
+    var tip: Int!
 
 //    override func viewDidLoad() {
 //        super.viewDidLoad()
@@ -23,6 +26,7 @@ class CalculatorViewController: UIViewController {
 //    }
     
     @IBAction func tipChanged(_ sender: UIButton) {
+        //billTextField.endEditing(true)
         zeroPctButton.isSelected = false
         tenPctButton.isSelected = false
         twentyPctButton.isSelected = false
@@ -35,14 +39,33 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction func calculatePressed(_ sender: UIButton) {
-//        if zeroPctButton.isSelected {
-//            print("0")
-//        } else if tenPctButton.isSelected {
-//            print("0.1")
-//        } else if twentyPctButton.isSelected {
-//            print("0.2")
-//        }
-        print(numOfSplits)
+        bill = billTextField.text
+         
+        if zeroPctButton.isSelected {
+            result = Double(bill)! / Double(numOfSplits)
+            tip = 0
+        } else if tenPctButton.isSelected {
+            result = Double(bill)! * (1 + 0.1) / Double(numOfSplits)
+            tip = 10
+        } else if twentyPctButton.isSelected {
+            result = Double(bill)! * (1 + 0.2) / Double(numOfSplits)
+            tip = 20
+        }
+        
+        
+        print(String(format: "%.2f", result))
+        
+        performSegue(withIdentifier: "goToResult", sender: self)
+        
+        
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationVC = segue.destination as! ResultsViewController
+        destinationVC.label = String(format: "%.2f", result)
+        destinationVC.message = "Split between \(numOfSplits) people, with \(tip!)% tip."
+    }
+    
+    
 }
 
